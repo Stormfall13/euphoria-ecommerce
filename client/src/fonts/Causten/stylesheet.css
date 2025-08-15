@@ -1,0 +1,162 @@
+@font-face {
+    font-family: 'Causten-ExtraBoldOblique';
+    src: url('Causten-ExtraBoldOblique.woff2') format('woff2'),
+        url('Causten-ExtraBoldOblique.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Causten';
+    src: url('Causten-ExtraBold.woff2') format('woff2'),
+        url('Causten-ExtraBold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Causten';
+    src: url('Causten-ExtraLight.woff2') format('woff2'),
+        url('Causten-ExtraLight.woff') format('woff');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Causten';
+    src: url('Causten-Black.woff2') format('woff2'),
+        url('Causten-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Causten-LightOblique';
+    src: url('Causten-LightOblique.woff2') format('woff2'),
+        url('Causten-LightOblique.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Causten';
+    src: url('Causten-Light.woff2') format('woff2'),
+        url('Causten-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Causten-ExtraLightOblique';
+    src: url('Causten-ExtraLightOblique.woff2') format('woff2'),
+        url('Causten-ExtraLightOblique.woff') format('woff');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Causten-BoldOblique';
+    src: url('Causten-BoldOblique.woff2') format('woff2'),
+        url('Causten-BoldOblique.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Causten';
+    src: url('Causten-Bold.woff2') format('woff2'),
+        url('Causten-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Causten-ThinOblique';
+    src: url('Causten-ThinOblique.woff2') format('woff2'),
+        url('Causten-ThinOblique.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Causten';
+    src: url('Causten-Regular.woff2') format('woff2'),
+        url('Causten-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Causten-MediumOblique';
+    src: url('Causten-MediumOblique.woff2') format('woff2'),
+        url('Causten-MediumOblique.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Causten';
+    src: url('Causten-Thin.woff2') format('woff2'),
+        url('Causten-Thin.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Causten-SemiBoldOblique';
+    src: url('Causten-SemiBoldOblique.woff2') format('woff2'),
+        url('Causten-SemiBoldOblique.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Causten';
+    src: url('Causten-Medium.woff2') format('woff2'),
+        url('Causten-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Causten-BlackOblique';
+    src: url('Causten-BlackOblique.woff2') format('woff2'),
+        url('Causten-BlackOblique.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Causten';
+    src: url('Causten-SemiBold.woff2') format('woff2'),
+        url('Causten-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Causten-RegularOblique';
+    src: url('Causten-RegularOblique.woff2') format('woff2'),
+        url('Causten-RegularOblique.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
