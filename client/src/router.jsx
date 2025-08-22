@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Navigate  } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import ProtectedRoute from "./components/ProtectedRoute";
-import GlobalSearchProduct from "./components/GlobalSearchProduct";
 
 const Login = lazy(() => import("./pages/Login"));
 const Register = lazy(() => import("./pages/Register"));
@@ -16,6 +15,7 @@ const AdmimAllUsersPage = lazy(() => import("./pages/AdminAllUsersPage"));
 const SearchResultsPage = lazy(() => import("./pages/SearchResultsPage"));
 const Favorites = lazy(() => import("./pages/Favorites"));
 const AllCategoryPage = lazy(() => import("./pages/AllCategoryPage"));
+const BrandsPage = lazy(() => import("./pages/BrandsPage"));
 
 const AppRouter = () => {
 
@@ -32,6 +32,7 @@ const AppRouter = () => {
                     <Route path="/search" element={<SearchResultsPage />} />
                     <Route path="/favorites" element={<Favorites />} />
                     <Route path="/allcategory" element={<AllCategoryPage />} />
+                    <Route path="/brand/:brandName" element={<BrandsPage />} />
 
 
                     

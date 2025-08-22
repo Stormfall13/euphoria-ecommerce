@@ -20,9 +20,21 @@ const Product = sequelize.define("Product", {
         onDelete: "CASCADE", // <-- Добавляем каскадное удаление
         },
     },
-    image: {  // 🔹 Добавляем поле для хранения пути к изображению
+    brand: {
         type: DataTypes.STRING,
-        allowNull: true, // Можно загружать товары без фото
+        allowNull: true, // Может быть пустым
+    },
+    images: {  // 🔹 массив картинок
+        type: DataTypes.ARRAY(DataTypes.STRING),
+        allowNull: true,
+    },
+    sizes: {  // 🔹 массив строк (размеры)
+        type: DataTypes.ARRAY(DataTypes.STRING),
+        allowNull: true,
+    },
+    colors: { // 🔹 массив строк (hex-коды)
+        type: DataTypes.ARRAY(DataTypes.STRING),
+        allowNull: true,
     },
     stock: {
         type: DataTypes.INTEGER,
@@ -40,7 +52,7 @@ const Product = sequelize.define("Product", {
     isSale: { // Акция
         type: DataTypes.BOOLEAN,
         defaultValue: false,
-    }
+    },
 });
 
 module.exports = Product;

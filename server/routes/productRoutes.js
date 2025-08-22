@@ -8,7 +8,7 @@ const router = express.Router();
 // 📌 1. Создание товара
 router.post("/", async (req, res) => {
     try {
-        const { nameProd, price, categoryId, image, stock, isHit, isNew, isSale } = req.body; // `image` приходит строкой
+        const { nameProd, price, categoryId, brand, images, sizes, colors, stock, isHit, isNew, isSale } = req.body;
 
         if (!nameProd || !price || !categoryId) {
             return res.status(400).json({ message: "Все поля обязательны" });
@@ -23,7 +23,10 @@ router.post("/", async (req, res) => {
             nameProd,
             price,
             categoryId,
-            image,
+            brand,
+            images: images || [], // массив
+            sizes: sizes || [],
+            colors: colors || [],
             stock,
             isHit: Boolean(isHit),
             isNew: Boolean(isNew),
@@ -39,7 +42,7 @@ router.post("/", async (req, res) => {
 router.put("/:id", async (req, res) => {
     try {
         const { id } = req.params;
-        const { nameProd, price, categoryId, image, stock, isHit, isNew, isSale } = req.body; // `image` теперь строка
+        const { nameProd, price, categoryId, brand, images, stock, isHit, isNew, isSale } = req.body; // `image` теперь строка
 
         const product = await Product.findByPk(id);
         if (!product) {
@@ -56,7 +59,10 @@ router.put("/:id", async (req, res) => {
         product.nameProd = nameProd || product.nameProd;
         product.price = price || product.price;
         product.categoryId = categoryId || product.categoryId;
-        product.image = image !== undefined ? image : product.image; // Если `image` передали — обновляем, иначе оставляем старое
+        product.brand = brand || product.brand;
+        product.images || [], // массив
+        product.sizes || [],
+        product.colors || [],
         product.stock = stock || product.stock;
 
          // 🔹 Обновляем флаги
@@ -71,6 +77,25 @@ router.put("/:id", async (req, res) => {
     }
 });
 
+// 🔹 GET /api/products/brand/:brandName
+router.get('/brand/:brandName', async (req, res) => {
+    try {
+      const { brandName } = req.params;
+      
+      const products = await Product.findAll({
+        where: {
+          brand: brandName // Ищем товары, где бренд совпадает
+        },
+        include: [{ model: Category }] // Опционально: если нужно info о категории
+      });
+  
+      res.json(products);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Ошибка при получении товаров бренда' });
+    }
+});
+
 router.get("/ishits", async (req, res) => {
     try {
         const products = await Product.findAll({ where: { isHit: true } });
@@ -79,7 +104,6 @@ router.get("/ishits", async (req, res) => {
         res.status(500).json({ message: "Ошибка сервера", error: err.message });
     }
 });
-
 router.get("/isnews", async (req, res) => {
     try {
         const products = await Product.findAll({ where: { isNew: true } });

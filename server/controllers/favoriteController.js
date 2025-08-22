@@ -48,7 +48,7 @@ const getUserFavorites = async (req, res) => {
         include: [
           {
             model: Product,
-            attributes: ['id', 'nameProd', 'price', 'image', 'stock']
+            attributes: ['id', 'nameProd', 'price', 'images', 'stock', 'sizes', 'colors', 'isNew', 'isHit', 'isSale']
           }
         ]
       });

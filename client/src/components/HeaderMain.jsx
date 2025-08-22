@@ -17,7 +17,7 @@ const HeaderMain = () => {
     const [categories, setCategories] = useState([]);
     const [openCollection, setOpenCollection] = useState(null);
     const [userWindow, setUserWindow] = useState(false);
-    const favoriteIds = useSelector(state => state.favorites.ids);
+    const favoriteIds = useSelector((state) => state.favorites.ids);
     const user = useSelector((state) => state.auth.user);
     
 
