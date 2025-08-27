@@ -1814,14 +1814,19 @@ p {
 .wrapp__product-page .product__wrapper-top {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 20px;
+  gap: 74px;
+}
+.wrapp__product-page .right__wrapp-product {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
 }
 .wrapp__product-page .product__slider {
   display: flex;
   max-width: 520px;
   width: 100%;
   height: auto;
+  gap: 35px;
 }
 .wrapp__product-page .product__slider .main__image-container {
   max-width: 520px;
@@ -1839,18 +1844,43 @@ p {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 24px;
 }
 .wrapp__product-page .product__slider .slider__control-panel .slider__btn-wrapp {
   display: flex;
   flex-direction: column;
+  gap: 12px;
+}
+.wrapp__product-page .product__slider .slider__control-panel .slider__btn-wrapp button {
+  background: #f7f7f7;
+  border: 0;
+  outline: none;
+  width: 21px;
+  height: 21px;
+  border-radius: 100%;
+  transition: 0.6s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media (any-hover: hover) {
+  .wrapp__product-page .product__slider .slider__control-panel .slider__btn-wrapp button:hover {
+    background: var(--fourth);
+  }
+  .wrapp__product-page .product__slider .slider__control-panel .slider__btn-wrapp button:hover img {
+    filter: invert(1);
+  }
 }
 .wrapp__product-page .product__slider .slider__control-panel .thumbnails {
   display: flex;
   flex-direction: column;
 }
 .wrapp__product-page .product__slider .slider__control-panel .thumbnails .thumbnails__mini {
-  width: 70px;
-  height: 70px;
+  width: 68px;
+  height: 68px;
+  transition: "all 0.6s ease";
+  overflow: "hidden";
+  border-radius: 8px;
 }
 .wrapp__product-page .product__slider .slider__control-panel .thumbnails .thumbnails__mini img {
   width: 100%;
@@ -1989,4 +2019,56 @@ p {
   background: transparent;
   border: 2px solid var(--fourth);
   border-radius: 100%;
+}
+.wrapp__product-page .prod__btn-price {
+  display: flex;
+  gap: 25px;
+}
+.wrapp__product-page .prod__btn-price .btn__add {
+  font-family: var(--text-font-causten);
+  font-weight: var(--semi-bold);
+  font-size: 18px;
+  color: var(--text-color-white);
+  background: var(--first-color);
+  border-radius: 8px;
+  border: 0;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  padding: 13px 47px;
+  cursor: pointer;
+}
+.wrapp__product-page .prod__btn-price .price__prod {
+  font-family: var(--text-font-causten);
+  font-weight: var(--bold);
+  font-size: 18px;
+  color: var(--text-color-black);
+  border: 1px solid var(--fourth);
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 37px;
+}
+.wrapp__product-page .inform__wrapp {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  max-width: 506px;
+}
+.wrapp__product-page .inform__wrapp .inform__wrapper {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  max-width: 246px;
+  width: 100%;
+}
+.wrapp__product-page .inform__wrapp .inform__wrapper .inform__text {
+  font-family: var(--text-font-causten);
+  font-weight: var(--medium);
+  font-size: 18px;
+  color: var(--text-color-black);
+}
+.wrapp__product-page .tabs__panel {
+  max-width: 610px;
 }/*# sourceMappingURL=App.css.map */

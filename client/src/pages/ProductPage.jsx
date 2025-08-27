@@ -13,6 +13,11 @@ import starFalse from '../assets/star-false.svg';
 import arrowLeftCrumbs from '../assets/arrow-left-crumbs.svg';
 import commentIcon from '../assets/comment__icon.svg';
 import arrowSizeRight from '../assets/arrow-size-right.svg';
+import cartProduct from '../assets/cart-product.svg';
+import inf1 from '../assets/inf1.svg';
+import inf2 from '../assets/inf2.svg';
+import inf3 from '../assets/inf3.svg';
+import inf4 from '../assets/inf4.svg';
 
 import CommentsProdPage from "../components/ProductPageUtils/CommentsProdPage";
 import QnAProductPage from "../components/ProductPageUtils/QnAProductPage";
@@ -167,6 +172,30 @@ const ProductPage = () => {
     ? `${process.env.REACT_APP_API_URL}${images[currentImageIndex].startsWith("/") ? "" : "/uploads/"}${images[currentImageIndex]}`
     : noPhoto;
 
+
+  const dataInformWrapp = [
+    {
+      id: 1,
+      img: inf1,
+      text: 'Secure payment',
+    },
+    {
+      id: 2,
+      img: inf2,
+      text: 'Size & Fit',
+    },
+    {
+      id: 3,
+      img: inf3,
+      text: 'Free shipping',
+    },
+    {
+      id: 4,
+      img: inf4,
+      text: 'Free Shipping & Returns',
+    },
+  ]
+
   return (
     <section className="wrapp__product-page">
       <div className="product__wrapper-top">
@@ -178,21 +207,15 @@ const ProductPage = () => {
             {images.length > 1 && (
               <div className="thumbnails">
                 {images.map((img, index) => (
-                  <div
-                    className="thumbnails__mini"
-                    key={index}
-                    onClick={() => goToImage(index)}
-                    style={{
-                      border: `2px solid ${index === currentImageIndex ? "#007bff" : "#ddd"}`,
-                      backgroundColor: index === currentImageIndex ? "#f0f8ff" : "white",
-                      transition: "all 0.6s ease",
-                      overflow: "hidden"
-                    }}
-                  >
+                  <div className="thumbnails__mini" 
+                        key={index} 
+                        onClick={() => goToImage(index)}
+                        style={{
+                          border: `1px solid ${index === currentImageIndex ? "#3C4242" : "transparent"}`
+                        }}>
                     <img
                       src={`${process.env.REACT_APP_API_URL}${img.startsWith("/") ? "" : "/uploads/"}${img}`}
-                      alt={`Thumbnail ${index + 1}`}
-                    />
+                      alt={`Thumbnail ${index + 1}`}/>
                   </div>
                 ))}
               </div>
@@ -297,8 +320,23 @@ const ProductPage = () => {
               </div>
             </div>
           )}
-          <button onClick={handleAddToCart}>Add to cart</button>
-          <p><strong>Цена:</strong> {product.price} $</p>
+          <div className="prod__btn-price">
+            <button className="btn__add" onClick={handleAddToCart}>
+              <img src={cartProduct} alt="cart product" />
+              Add to cart
+            </button>
+            <p className="price__prod">${product.price}</p>
+          </div>
+          <div className="inform__wrapp">
+            {dataInformWrapp.map((items) => (
+              <div className="inform__wrapper" key={items.id}>
+                  <div className="inform__img">
+                    <img src={items.img} alt="inform img" />
+                  </div>
+                  <p className="inform__text">{items.text}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
       <div className="tabs__panel">
