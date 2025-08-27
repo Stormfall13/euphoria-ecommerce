@@ -6,6 +6,7 @@ import { fetchProductsByCategory } from "../store/slices/productsSlice";
 import { fetchFavorites, toggleFavoriteLocally } from "../store/slices/favoriteSlice";
 import { setInitialQuantities } from "../store/slices/quantitySlice";
 import useMediaQuery from '../components/useMediaQuery';
+import CategoryPageContent from "../components/CategoryPageContent";
 
 import noPhoto from "../assets/no-photo.png";
 import filter from '../assets/filter.svg';
@@ -15,7 +16,7 @@ import heartCardBrown from '../assets/heart-card-brown.svg';
 import heartCardWhite from '../assets/heart-card-white.svg';
 
 import './categoryPage.css';
-import HeaderMain from "../components/HeaderMain";
+
 
 const CategoryPage = () => {
     const { id } = useParams();
@@ -36,6 +37,20 @@ const CategoryPage = () => {
     const [selectedSizes, setSelectedSizes] = useState([]);
     const [showFilters, setShowFilters] = useState(true); 
     const [activeFilter, setActiveFilter] = useState('all');
+
+    const [filterOpened, setFilterOpened] = useState(false);
+    const [openSections, setOpenSections] = useState({
+        price: false,
+        colors: false,
+        sizes: false
+      });
+
+    const toggleSection = (section) => {
+        setOpenSections(prev => ({
+            ...prev,
+            [section]: !prev[section]
+        }));
+    };
     
     const isMobile = useMediaQuery("(max-width: 991px)");
 
@@ -124,12 +139,10 @@ const CategoryPage = () => {
         return result;
     }, [filteredProducts, activeFilter]);
 
-    
     // 🔹 ОБРАБОТЧИКИ КНОПОК
     const handleFilterChange = (filterType) => {
         setActiveFilter(filterType);
     };
-    
 
     // 🔹 ОБРАБОТЧИКИ ФИЛЬТРОВ
     const handlePriceRangeChange = (e) => {
@@ -227,33 +240,147 @@ const CategoryPage = () => {
 
     return (
         <>
-            <HeaderMain />
             <section className="main__category">
             <div className="category__wrapp">
 
                 <div className="filter__wrapp">
                     <div className="filter__menu-wrapp">
-                        <p className="filter__title">
+                        <p className="filter__title" onClick={() => setFilterOpened(prev => !prev)}>
                             Filter
                             <img src={filter} alt="filter icon" />
                         </p>
-                        <nav className="filter__menu">
-                        <ul>
-                            {categories
-                            .filter(cat => cat.collection === category?.collection) // берём только из той же коллекции
-                            .map(cat => (
-                                <li key={cat.id}>
-                                <Link to={`/category/${cat.id}`}>
-                                    {cat.name}
-                                    <div className="filter__menu-arrow">
-                                        <img src={filterMenuArrowRight} alt="menu arrow" />
+                        {filterOpened ? (
+                            <>
+                                <nav className="filter__menu">
+                                <ul>
+                                    {categories
+                                    .filter(cat => cat.collection === category?.collection) // берём только из той же коллекции
+                                    .map(cat => (
+                                        <li key={cat.id}>
+                                        <Link to={`/category/${cat.id}`}>
+                                            {cat.name}
+                                            <div className="filter__menu-arrow">
+                                                <img src={filterMenuArrowRight} alt="menu arrow" />
+                                            </div>
+                                        </Link>
+                                        </li>
+                                    ))
+                                    }
+                                </ul>
+                                </nav>
+                                {/* 🔹 ПАНЕЛЬ ФИЛЬТРОВ */}
+                                <div className="filter__panel" style={{ 
+                                    display: showFilters ? 'block' : 'none', 
+                                }}>
+                                    
+                                    {/* 🔹 ФИЛЬТР ПО ЦЕНЕ */}
+                                    <div className="filter__range">
+                                        <h4 className="filter__title" onClick={() => toggleSection('price')}>
+                                            Price 
+                                            <img
+                                                className={openSections.price ? '' : 'rotated'}
+                                                src={filterArrowOpenClose} 
+                                                alt="filter arrow"/>
+                                        </h4>
+                                        {openSections.price && (
+                                        <div className="price__wrapp">
+                                            <input
+                                                type="range"
+                                                min={minPrice}
+                                                max={maxPrice}
+                                                value={selectedMaxPrice}
+                                                onChange={handlePriceRangeChange}
+                                                className="input__range"
+                                            />
+                                            <div className="min__max">
+                                                <div className="min__max-input">
+                                                    <div className="currency">$</div>
+                                                    <input
+                                                        type="text"
+                                                        value={selectedMinPrice}
+                                                        onChange={handleMinPriceChange}
+                                                        min={0}
+                                                        max={selectedMaxPrice}
+                                                    />
+                                                </div>
+                                                <div className="min__max-input">
+                                                    <div className="currency">$</div>
+                                                    <input
+                                                        type="text"
+                                                        value={selectedMaxPrice}
+                                                        onChange={handleMaxPriceChange}
+                                                        min={selectedMinPrice}
+                                                        max={maxPrice}
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        )}
                                     </div>
-                                </Link>
-                                </li>
-                            ))
-                            }
-                        </ul>
-                        </nav>
+
+                                    {/* 🔹 ФИЛЬТР ПО ЦВЕТАМ */}
+                                    {allColors.length > 0 && (
+                                        <div className="filter__colors">
+                                            <h4 className="filter__title" onClick={() => toggleSection('colors')}>
+                                                Colors
+                                                <img 
+                                                    className={openSections.colors ? '' : 'rotated'}
+                                                    src={filterArrowOpenClose} 
+                                                    alt="filter arrow"/>
+                                            </h4>
+                                            {openSections.colors && (
+                                            <div className="color__wrapp">
+                                                {allColors.map(color => (
+                                                    <div key={color}>
+                                                        <div 
+                                                        className={`color__wrapper ${selectedColors.includes(color) ? "active" : ""}`}
+                                                        style={{ backgroundColor: color }} 
+                                                        title={color}
+                                                        onClick={() => handleColorToggle(color)}>
+                                                            <input
+                                                                type="checkbox"
+                                                                checked={selectedColors.includes(color)}
+                                                                onChange={() => handleColorToggle(color => !color)}
+                                                                className="color__checkbox"
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                            )}
+                                        </div>
+                                    )}
+                                    {/* 🔹 ФИЛЬТР ПО РАЗМЕРАМ */}
+                                    {allSizes.length > 0 && (
+                                        <div className="filter__size">
+                                            <h4 className="filter__title" onClick={() => toggleSection('sizes')}>
+                                                Size
+                                                <img 
+                                                    className={openSections.sizes ? '' : 'rotated'}
+                                                    src={filterArrowOpenClose}
+                                                    alt="filter arrow"/>
+                                            </h4>
+                                            {openSections.sizes && (
+                                            <div className="size__wrapp">
+                                                {allSizes.map(size => (
+                                                    <div key={size} className={`size__wrapper ${selectedSizes.includes(size) ? 'select__size' : ''}`}>
+                                                        <input
+                                                            type="checkbox"
+                                                            checked={selectedSizes.includes(size)}
+                                                            onChange={() => handleSizeToggle(size)}
+                                                        />
+                                                        {size}
+                                                    </div>
+                                                ))}
+                                            </div>
+                                            )}
+                                        </div>
+                                    )}
+                                </div>
+                            </>
+                        ) : (
+                            ''
+                        )}
                     </div>
                     {/* 🔹 КНОПКА ПОКАЗАТЬ/СКРЫТЬ ФИЛЬТРЫ (для мобильных) */}
                     {isMobile && (  
@@ -262,100 +389,6 @@ const CategoryPage = () => {
                         </button> 
                     )}
 
-                    {/* 🔹 ПАНЕЛЬ ФИЛЬТРОВ */}
-                    <div className="filter__panel" style={{ 
-                        display: showFilters ? 'block' : 'none', 
-                    }}>
-                        
-                        {/* 🔹 ФИЛЬТР ПО ЦЕНЕ */}
-                        <div className="filter__range">
-                            <h4 className="filter__title">
-                                Price 
-                                <img src={filterArrowOpenClose} alt="filter arrow" />
-                            </h4>
-                            <div className="price__wrapp">
-                                <input
-                                    type="range"
-                                    min={minPrice}
-                                    max={maxPrice}
-                                    value={selectedMaxPrice}
-                                    onChange={handlePriceRangeChange}
-                                    className="input__range"
-                                />
-                                <div className="min__max">
-                                    <div className="min__max-input">
-                                        <div className="currency">$</div>
-                                        <input
-                                            type="text"
-                                            value={selectedMinPrice}
-                                            onChange={handleMinPriceChange}
-                                            min={0}
-                                            max={selectedMaxPrice}
-                                        />
-                                    </div>
-                                    <div className="min__max-input">
-                                        <div className="currency">$</div>
-                                        <input
-                                            type="text"
-                                            value={selectedMaxPrice}
-                                            onChange={handleMaxPriceChange}
-                                            min={selectedMinPrice}
-                                            max={maxPrice}
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* 🔹 ФИЛЬТР ПО ЦВЕТАМ */}
-                        {allColors.length > 0 && (
-                            <div className="filter__colors">
-                                <h4 className="filter__title">
-                                    Colors
-                                    <img src={filterArrowOpenClose} alt="filter arrow" />
-                                </h4>
-                                <div className="color__wrapp">
-                                    {allColors.map(color => (
-                                        <div key={color}>
-                                            <div 
-                                            className={`color__wrapper ${selectedColors.includes(color) ? "active" : ""}`}
-                                            style={{ backgroundColor: color }} 
-                                            title={color}
-                                            onClick={() => handleColorToggle(color)}>
-                                                <input
-                                                    type="checkbox"
-                                                    checked={selectedColors.includes(color)}
-                                                    onChange={() => handleColorToggle(color => !color)}
-                                                    className="color__checkbox"
-                                                />
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        )}
-                        {/* 🔹 ФИЛЬТР ПО РАЗМЕРАМ */}
-                        {allSizes.length > 0 && (
-                            <div className="filter__size">
-                                <h4 className="filter__title">
-                                    Size
-                                    <img src={filterArrowOpenClose} alt="filter arrow" />
-                                </h4>
-                                <div className="size__wrapp">
-                                    {allSizes.map(size => (
-                                        <div key={size} className={`size__wrapper ${selectedSizes.includes(size) ? 'select__size' : ''}`}>
-                                            <input
-                                                type="checkbox"
-                                                checked={selectedSizes.includes(size)}
-                                                onChange={() => handleSizeToggle(size)}
-                                            />
-                                            {size}
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        )}
-                    </div>
                 </div>
                 <div className="filtered">
                 <div className="filtered__items">
@@ -381,7 +414,7 @@ const CategoryPage = () => {
                         </button>
                     </div>
                 </div>
-                {filteredProducts.length === 0 ? (
+                {finallyFilteredProducts.length === 0 ? (
                     // 🔹 ТОВАРЫ БЕЗ ФИЛЬТРАЦИИ
                     <div className="product__wrapp">
                         <div className="product">
@@ -428,7 +461,7 @@ const CategoryPage = () => {
                     // 🔹 ОТОБРАЖАЕМ ОТФИЛЬТРОВАННЫЕ ТОВАРЫ
                     <div className="product__wrapp">
                         <div className="product">
-                            {filteredProducts.map((product) => (
+                            {finallyFilteredProducts.map((product) => (
                                 <div key={product.id} className="wrapper__prod">
                                     <div>
                                         <div className="prod__image">
@@ -469,7 +502,9 @@ const CategoryPage = () => {
                 )}
                 </div>
             </div>
+            <CategoryPageContent />
             </section>
+            
         </>
     );
 };

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import noPhoto from "../assets/no-photo.png";
-import HeaderMain from "../components/HeaderMain";
 
 const Favorites = () => {
   const [favorites, setFavorites] = useState([]);
@@ -78,7 +77,6 @@ const Favorites = () => {
 
   return (
     <>
-    <HeaderMain />
     <div>
     <h2>Избранные товары</h2>
     {favorites.length > 0 && (

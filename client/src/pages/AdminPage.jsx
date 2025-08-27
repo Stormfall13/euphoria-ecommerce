@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
-import HeaderMain from "../components/HeaderMain";
 
 const AdminPage = () => {
     const navigate = useNavigate();
@@ -25,7 +24,6 @@ const AdminPage = () => {
     const [categories, setCategories] = useState([]);
 
     const [productOverlay, setProductOverlay] = useState(false);
-    const [selectedImagesInOverlay, setSelectedImagesInOverlay] = useState([]);
     const [selectedImageIndex, setSelectedImageIndex] = useState(null);
     const [categoryOverlay, setCategoryOverlay] = useState(false);
 
@@ -33,9 +31,7 @@ const AdminPage = () => {
     const [isNew, setIsNew] = useState(false);
     const [isSale, setIsSale] = useState(false);
 
-    const [comments, setComments] = useState([]);
-    const [activeTab, setActiveTab] = useState("products");
-    
+    const [comments, setComments] = useState("");
     
     const token = useSelector((state) => state.auth.token);
     const user = useSelector((state) => state.auth.user);
@@ -192,31 +188,6 @@ const AdminPage = () => {
         setColors(newArr);
     };
 
-    // выбор для товара (множественный выбор)
-    const toggleProductImageSelection = (imgPath) => {
-        setSelectedImagesInOverlay(prev => {
-            if (prev.includes(imgPath)) {
-                return prev.filter(path => path !== imgPath);
-            } else {
-                return [...prev, imgPath];
-            }
-        });
-    };
-
-    const confirmProductImagesSelection = () => {
-        setImages(prev => {
-            const newImages = [...prev];
-            selectedImagesInOverlay.forEach(img => {
-                if (!newImages.includes(img)) {
-                    newImages.push(img);
-                }
-            });
-            return newImages;
-        });
-        setSelectedImagesInOverlay([]);
-        setProductOverlay(false);
-    };
-
     const selectProductImage = (imgPath) => {
         if (selectedImageIndex !== null) {
             const newArr = [...images];
@@ -251,68 +222,20 @@ const AdminPage = () => {
         }
     };
 
-    // 🔹 Функция для публикации комментария
-    const handlePublishComment = async (commentId) => {
-        try {
-            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/comments/${commentId}/publish`, {
-                method: "PUT",
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            });
-
-            if (response.ok) {
-                alert("Комментарий опубликован!");
-                // Обновляем список, удаляя опубликованный комментарий
-                setComments(comments.filter(comment => comment.id !== commentId));
-            } else {
-                alert("Ошибка при публикации");
-            }
-        } catch (error) {
-            console.error("Ошибка:", error);
-            alert("Не удалось опубликовать комментарий");
-        }
-    };
-
-    // 🔹 Функция для удаления комментария
-    const handleDeleteComment = async (commentId) => {
-        if (!window.confirm("Удалить этот комментарий?")) {
-            return;
-        }
-        try {
-            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/comments/${commentId}`, {
-                method: "DELETE",
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            });
-
-            if (response.ok) {
-                alert("Комментарий удален!");
-                // Обновляем список, удаляя комментарий
-                setComments(comments.filter(comment => comment.id !== commentId));
-            } else {
-                alert("Ошибка при удалении");
-            }
-        } catch (error) {
-            console.error("Ошибка:", error);
-            alert("Не удалось удалить комментарий");
-        }
-    };
     
 
     return (
         <div className="admin-container">
-            <HeaderMain />
             <Link to="/gallery">
                 Перейти в галерею
             </Link>
             <Link to='/all-users'>
                 Страница пользователей
             </Link>
+            <Link to='/comments-moder'>
+                Модерация комментов
+            </Link>
             <h1>Админ-панель</h1>
-
-
 
             <h2>Добавить категорию</h2>
             <form onSubmit={handleCategorySubmit}>
@@ -586,128 +509,7 @@ const AdminPage = () => {
                     </div>
                 </div>
             )}
-            <div className="comment__moders">
-                {/* 🔹 НАЧАЛО: Переключение вкладок админки */}
-                <div style={{ marginTop: "40px", borderBottom: "1px solid #ccc" }}>
-                    <button 
-                        onClick={() => setActiveTab("products")}
-                        style={{ 
-                            padding: "10px 20px", 
-                            marginRight: "10px", 
-                            backgroundColor: activeTab === "products" ? "#007bff" : "#f0f0f0",
-                            color: activeTab === "products" ? "white" : "black",
-                            border: "none",
-                            cursor: "pointer"
-                        }}
-                    >
-                        Товары
-                    </button>
-                    <button 
-                        onClick={() => setActiveTab("categories")}
-                        style={{ 
-                            padding: "10px 20px", 
-                            marginRight: "10px", 
-                            backgroundColor: activeTab === "categories" ? "#007bff" : "#f0f0f0",
-                            color: activeTab === "categories" ? "white" : "black",
-                            border: "none",
-                            cursor: "pointer"
-                        }}
-                    >
-                        Категории
-                    </button>
-                    <button 
-                        onClick={() => setActiveTab("comments")}
-                        style={{ 
-                            padding: "10px 20px", 
-                            backgroundColor: activeTab === "comments" ? "#007bff" : "#f0f0f0",
-                            color: activeTab === "comments" ? "white" : "black",
-                            border: "none",
-                            cursor: "pointer"
-                        }}
-                    >
-                        Модерация комментариев ({comments.length})
-                    </button>
-                </div>
-                {/* 🔹 КОНЕЦ: Переключение вкладок админки */}
 
-                {/* 🔹 НАЧАЛО: Вкладка модерации комментариев */}
-                {activeTab === "comments" && (
-                    <div style={{ marginTop: "20px" }}>
-                        <h2>Комментарии на модерации</h2>
-                        {comments.length === 0 ? (
-                            <p>Нет комментариев для модерации. Отличная работа!</p>
-                        ) : (
-                            <table style={{ width: "100%", borderCollapse: "collapse" }}>
-                                <thead>
-                                    <tr style={{ backgroundColor: "#f5f5f5" }}>
-                                        <th style={{ border: "1px solid #ddd", padding: "8px" }}>Товар</th>
-                                        <th style={{ border: "1px solid #ddd", padding: "8px" }}>Автор</th>
-                                        <th style={{ border: "1px solid #ddd", padding: "8px" }}>Email</th>
-                                        <th style={{ border: "1px solid #ddd", padding: "8px" }}>Текст</th>
-                                        <th style={{ border: "1px solid #ddd", padding: "8px" }}>Дата</th>
-                                        <th style={{ border: "1px solid #ddd", padding: "8px" }}>Действия</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {comments.map((comment) => (
-                                        <tr key={comment.id}>
-                                            <td style={{ border: "1px solid #ddd", padding: "8px" }}>
-                                                {comment.Product?.nameProd || "Товар удален"}
-                                            </td>
-                                            <td style={{ border: "1px solid #ddd", padding: "8px" }}>
-                                                {comment.User ? comment.User.name : comment.guestName}
-                                                <br />
-                                                <small style={{ color: "gray" }}>
-                                                    ({comment.User ? "Пользователь" : "Гость"})
-                                                </small>
-                                            </td>
-                                            <td style={{ border: "1px solid #ddd", padding: "8px" }}>
-                                                {comment.User ? comment.User.email : comment.guestEmail}
-                                            </td>
-                                            <td style={{ border: "1px solid #ddd", padding: "8px", maxWidth: "300px" }}>
-                                                {comment.text}
-                                            </td>
-                                            <td style={{ border: "1px solid #ddd", padding: "8px" }}>
-                                                {new Date(comment.createdAt).toLocaleDateString()}
-                                            </td>
-                                            <td style={{ border: "1px solid #ddd", padding: "8px" }}>
-                                                <button
-                                                    onClick={() => handlePublishComment(comment.id)}
-                                                    style={{
-                                                        padding: "5px 10px",
-                                                        marginRight: "5px",
-                                                        backgroundColor: "#4CAF50",
-                                                        color: "white",
-                                                        border: "none",
-                                                        borderRadius: "3px",
-                                                        cursor: "pointer"
-                                                    }}
-                                                >
-                                                    Опубликовать
-                                                </button>
-                                                <button
-                                                    onClick={() => handleDeleteComment(comment.id)}
-                                                    style={{
-                                                        padding: "5px 10px",
-                                                        backgroundColor: "#ff4444",
-                                                        color: "white",
-                                                        border: "none",
-                                                        borderRadius: "3px",
-                                                        cursor: "pointer"
-                                                    }}
-                                                >
-                                                    Удалить
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                        )}
-                    </div>
-                )}
-                {/* 🔹 КОНЕЦ: Вкладка модерации комментариев */}
-            </div>
         </div>
     );
 };

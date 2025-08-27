@@ -10,10 +10,8 @@ import MadeBanner from "../components/MadeBanner";
 import ForMen from "../components/ForMen";
 import ForWomen from "../components/ForWomen";
 import Brands from "../components/Brands";
-import HeaderMain from "../components/HeaderMain";
 import Limelight from "../components/Limelight";
 import FeedBack from "../components/FeedBack";
-import Footer from "../components/Footer";
 
 
 const Home = () => {
@@ -27,7 +25,6 @@ const Home = () => {
     }, [dispatch]);
     return (
         <>
-            <HeaderMain />
             <SliderBanner />
             <Discount />
             <NewArrival />
@@ -38,7 +35,6 @@ const Home = () => {
             <Brands />
             <Limelight />
             <FeedBack />
-            <Footer />
         </>
     );
 };

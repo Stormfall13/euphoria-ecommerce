@@ -43,6 +43,14 @@ const Comment = sequelize.define("Comment", {
         type: DataTypes.TEXT,
         allowNull: false
     },
+    rating: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+        validate: {
+          min: 0,
+          max: 5,
+        }
+    },
     isPublished: {
         type: DataTypes.BOOLEAN,
         defaultValue: false // Комментарий скрыт до модерации

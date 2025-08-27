@@ -35,7 +35,7 @@ router.get("/product/:productId", async (req, res) => {
 // POST /api/comments - Создать новый комментарий
 router.post("/", async (req, res) => {
     try {
-        const { productId, userId, guestName, guestEmail, text } = req.body;
+        const { productId, userId, guestName, guestEmail, text, rating } = req.body;
 
         // Проверка обязательных полей
         if (!productId || !text) {
@@ -53,6 +53,7 @@ router.post("/", async (req, res) => {
             guestName,
             guestEmail,
             text,
+            rating,
             isPublished: false // По умолчанию на модерации
         });
 
@@ -104,6 +105,20 @@ router.get("/moderation", auth, async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: "Ошибка при загрузке комментариев" });
+    }
+});
+
+// GET /api/comments/published - опубликованные комментарии  
+router.get('/published', auth, async (req, res) => {
+    try {
+      const comments = await Comment.findAll({
+        where: { isPublished: true },
+        include: [{ model: Product }, { model: User }],
+        order: [['createdAt', 'DESC']]
+      });
+      res.json(comments);
+    } catch (error) {
+      res.status(500).json({ message: 'Ошибка загрузки' });
     }
 });
 

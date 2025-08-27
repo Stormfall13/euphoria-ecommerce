@@ -5,6 +5,8 @@ import productsReducer from "./slices/productsSlice";
 import favoriteReducer from "./slices/favoriteSlice";
 import cartReducer from "./slices/cartSlice";
 import quantityReducer from "./slices/quantitySlice";
+import commentsReducer from "./slices/commentsSlice";
+import qnaReducer from './slices/qnaSlice';
 
 const store = configureStore({
     reducer: {
@@ -14,6 +16,8 @@ const store = configureStore({
         favorites: favoriteReducer,
         cart: cartReducer,
         quantities: quantityReducer,
+        comments: commentsReducer,
+        qna: qnaReducer,
     },
 });
 

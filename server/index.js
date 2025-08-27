@@ -15,6 +15,8 @@ const categoryRoutes = require("./routes/categoryRoutes");
 const productRoutes = require("./routes/productRoutes");
 const cartRoutes = require("./routes/cartRoutes");
 const favoriteRoutes = require("./routes/favoriteRoutes");
+const qnaRoutes = require("./routes/qna");
+const commentsRoutes = require("./routes/comments");
 
 const authMiddleware = require("./middlewares/authMiddleware");
 
@@ -44,6 +46,8 @@ app.use("/api/categories", categoryRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/cart", cartRoutes);
 app.use("/api/favorites", favoriteRoutes);
+app.use('/api/qna', qnaRoutes);
+app.use('/api/comments', commentsRoutes);
 
 
 // Защищённый маршрут (пример)

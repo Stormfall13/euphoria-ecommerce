@@ -1,6 +1,8 @@
 import { BrowserRouter as Router, Routes, Route, Navigate  } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import ProtectedRoute from "./components/ProtectedRoute";
+import HeaderMain from "./components/HeaderMain";
+import Footer from "./components/Footer";
 
 const Login = lazy(() => import("./pages/Login"));
 const Register = lazy(() => import("./pages/Register"));
@@ -16,11 +18,13 @@ const SearchResultsPage = lazy(() => import("./pages/SearchResultsPage"));
 const Favorites = lazy(() => import("./pages/Favorites"));
 const AllCategoryPage = lazy(() => import("./pages/AllCategoryPage"));
 const BrandsPage = lazy(() => import("./pages/BrandsPage"));
+const CommentModerPage = lazy(() => import("./pages/CommentModerPage"));
 
 const AppRouter = () => {
 
     return (
         <Router>
+            <HeaderMain/>
             <Suspense fallback={<div>Загрузка...</div>}>
                 <Routes>
                     <Route path="/login" element={<Login />} />
@@ -42,6 +46,7 @@ const AppRouter = () => {
                     <Route path="/all-users" element={<ProtectedRoute allowedRoles={["admin"]}><AdmimAllUsersPage /></ProtectedRoute>} />
                     <Route path="/admin" element={ <ProtectedRoute allowedRoles={["admin"]}> <AdminPage /> </ProtectedRoute> } />
                     <Route path="/gallery" element={ <ProtectedRoute allowedRoles={["admin"]}> <GalleryPage /> </ProtectedRoute> } />
+                    <Route path="/comments-moder" element={ <ProtectedRoute allowedRoles={["admin"]}> <CommentModerPage /> </ProtectedRoute> } />
                     <Route path="/category/:id" element={ <ProtectedRoute allowedRoles={["admin", "user"]}> <CategoryPage /> </ProtectedRoute> } />
                     <Route path="/basket" element={<ProtectedRoute allowedRoles={["user", "admin"]}> <BasketPage/> </ProtectedRoute>} />
                     <Route path="/product/:id" element={<ProtectedRoute allowedRoles={["admin", "user"]}> <ProductPage /> </ProtectedRoute> } />
@@ -50,6 +55,7 @@ const AppRouter = () => {
                     <Route path="*" element={<Navigate to="/" />} />
                 </Routes>
             </Suspense>
+            <Footer />
         </Router>
     );
 };
