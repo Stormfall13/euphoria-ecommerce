@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import arrival1 from '../assets/arrival1.png';
 import arrival2 from '../assets/arrival2.webp';
 import arrival3 from '../assets/arrival3.webp';
 import arrival4 from '../assets/arrival4.webp';
 
+import '../scss/newArrival.css';
 
 const newArrivalData = [
   {

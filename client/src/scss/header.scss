@@ -1,0 +1,163 @@
+@mixin section__styles{
+    max-width: 1240px;
+    width: 100%;
+    padding: 50px 15px;
+    margin: 0 auto;
+    @media (max-width: 991px) {
+        padding: 30px 15px;
+    }
+    @media (max-width: 489px) {
+        width: initial;
+        padding: 20px 10px;
+    }
+}
+@mixin header__icon__style__false{
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    background: var(--second-color);
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+}
+@mixin header__icon__style__true{
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    background: var(--first-color);
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+}
+.header{
+    &__wrapp{
+        @include section__styles();
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 29px 15px;
+        .logo{
+            max-width: 100px;
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+        }
+        .category__menu{
+            .title__category{
+                text-transform: capitalize;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 40px;
+                .shop__link{
+                    font-family: var(--text-font-causten);
+                    font-weight: var(--medium);
+                    font-size: 22px;
+                    color: var(--text-color-brown);
+                    transition: 0.6s; 
+                }
+                @media (any-hover: hover) {
+                    .shop__link:hover{
+                        color: var(--text-color-black);
+                    }
+                }
+                span{
+                    font-family: var(--text-font-causten);
+                    font-weight: var(--medium);
+                    font-size: 22px;
+                    color: var(--text-color-brown);
+                    cursor: pointer;
+                    transition: 0.6s;
+                    position: relative;
+                }
+                @media (any-hover: hover) {
+                    span:hover{
+                        color: var(--text-color-black);
+                    }
+                }
+                .category__list{
+                    position: absolute;
+                    background: #fff;
+                    box-shadow: 0px 0px 2px 0px #c8c9c9;
+                    border-radius: 8px;
+                    padding: 5px 10px;
+                    z-index: 2;
+                    a{
+                        font-family: var(--text-font-causten);
+                        font-weight: var(--medium);
+                        font-size: 18px;
+                        color: var(--text-color-black);
+                    }
+                }
+            }
+        }
+        .global__search{
+            background: var(--second-color);
+            border-radius: 8px;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            padding: 10px 45px 10px 20px;
+            input{
+                border: 0;
+                outline: none;
+                font-family: var(--text-font-causten);
+                font-weight: var(--regular);
+                color: var(--text-color-black);
+                background: transparent;
+            }
+            input::placeholder{
+                color: var(--text-color-brown);
+            }
+            .global__search-btn{
+                border: 0;
+                outline: none;
+                background: transparent;
+                cursor: pointer;
+            }
+        }
+        .header__wrapp-btn{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .favorites__true{
+            @include header__icon__style__true();
+            cursor: pointer;
+            a{
+                width: 20px;
+                height: 20px;
+            }
+        }
+        .favorites__false{
+            @include header__icon__style__false();
+            cursor: pointer;
+        }
+        .user__true{
+            @include header__icon__style__true();
+            position: relative;
+            cursor: pointer;
+        }
+        .user__false{
+            @include header__icon__style__false();
+            position: relative;
+            cursor: pointer;
+        }
+        .header__navbar{
+            position: absolute;
+            background: var(--first-color);
+            border-radius: 8px;
+            padding: 5px 20px;
+            z-index: 2;
+        }
+        .basket__true{
+            @include header__icon__style__true();
+            cursor: pointer;
+        }
+        .basket__false{
+            @include header__icon__style__false();
+            cursor: pointer;
+        }
+    }
+}

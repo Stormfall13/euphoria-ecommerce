@@ -1,0 +1,140 @@
+@mixin section__styles{
+    max-width: 1240px;
+    width: 100%;
+    padding: 50px 15px;
+    margin: 0 auto;
+    @media (max-width: 991px) {
+        padding: 30px 15px;
+    }
+    @media (max-width: 489px) {
+        width: initial;
+        padding: 20px 10px;
+    }
+}
+.footer{
+    background: var(--fourth);
+    .footer__wrapp-colums{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        max-width: 1060px;
+    }
+    .footer__wrapp{
+        @include section__styles();
+        padding: 50px 15px 0 15px;
+        .three__colums-menu{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 585px;
+            width: 100%;
+            .footer__menu{
+                .title__menu{
+                    font-family: var(--text-font-causten);
+                    font-weight: var(--bold);
+                    font-size: 28px;
+                    color: var(--text-color-white);
+                    margin: 0 0 15px 0;
+                }
+                ul{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+                    li{
+                        a{
+                            font-family: var(--text-font-causten);
+                            font-weight: var(--medium);
+                            font-size: 18px;
+                            color: var(--text-color-white);
+                            transition: 0.6s;
+                        }
+                        @media (any-hover: hover) {
+                            a:hover{
+                                color: var(--first-color);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .contacts{
+            .title__contacts{
+                font-family: var(--text-font-causten);
+                font-weight: var(--bold);
+                font-size: 28px;
+                color: var(--text-color-white);
+                margin: 0 0 15px 0;
+            }
+            .contacts__wrapp{
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+                .contacts__text{
+                    font-family: var(--text-font-causten);
+                    font-weight: var(--medium);
+                    font-size: 18px;
+                    color: var(--text-color-white);
+                    transition: 0.6s;
+                }
+                @media (any-hover: hover) {
+                    .contacts__text:hover{
+                        color: var(--first-color);
+                    }
+                }
+            }
+        }
+    }
+    .footer__middle{
+        @include section__styles();
+        padding: 0 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        .social__wrapp{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .download__app-wrapp{
+            .title__download{
+                font-family: var(--text-font-causten);
+                font-weight: var(--bold);
+                font-size: 28px;
+                color: var(--text-color-white);
+                margin: 0 0 38px 0;
+            }
+            .variant__download{
+                display: flex;
+                flex-wrap: wrap;
+                gap: 21px;
+            }
+        }
+    }
+    .popular__categories{
+        @include section__styles();
+        padding: 30px 15px;
+        .popular__btn{
+            border-top: 1px solid #BEBCBD;
+            border-bottom: 1px solid #BEBCBD; 
+            padding: 30px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            .popular__title{
+                font-family: var(--text-font-causten);
+                font-weight: var(--bold);
+                font-size: 28px;
+                color: var(--text-color-white);
+            }
+        }
+    }
+    .copyright{
+        @include section__styles();
+        padding: 25px 15px;
+        font-family: var(--text-font-causten);
+        font-weight: var(--bold);
+        font-size: 18px;
+        color: var(--text-color-white);
+        text-align: center;
+    }
+}

@@ -7,6 +7,7 @@ const AdminPage = () => {
 
     const [nameProd, setNameProd] = useState("");
     const [price, setPrice] = useState("");
+    const [oldPrice, setOldPrice] = useState("");
     const [categoryId, setCategoryId] = useState("");
     const [stock, setStock] = useState("0")
     const [brand, setBrand] = useState("");
@@ -44,6 +45,7 @@ const AdminPage = () => {
             nameProd,
             description,
             price,
+            oldPrice,
             categoryId,
             brand,
             images,
@@ -72,6 +74,7 @@ const AdminPage = () => {
         setNameProd("")
         setDescription("")
         setPrice("")
+        setOldPrice("")
         setCategoryId("")
         setBrand("")
         setImages([])
@@ -279,7 +282,8 @@ const AdminPage = () => {
             <h2>Добавить товар</h2>
                 <form onSubmit={handleSubmit}>
                     <input type="text" placeholder="Название" value={nameProd} onChange={(e) => setNameProd(e.target.value)} required />
-                    <input type="number" placeholder="Цена" value={price} onChange={(e) => setPrice(e.target.value)} required />
+                    <input type="text" placeholder="Цена" value={price} onChange={(e) => setPrice(e.target.value)} required />
+                    <input type="text" placeholder="Старая цена" value={oldPrice} onChange={(e) => setOldPrice(e.target.value)}/>
                     <input 
                         type="text" 
                         placeholder="Бренд (например, Nike)" 

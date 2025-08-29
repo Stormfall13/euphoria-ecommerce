@@ -6,6 +6,8 @@ import brand3 from '../assets/brand3.png';
 import brand4 from '../assets/brand4.png';
 import brand5 from '../assets/brand5.png';
 
+import '../scss/brands.css';
+
 const brandsData = {
     title: 'Top Brands Deal',
     text: 'Up To 60% off brands',

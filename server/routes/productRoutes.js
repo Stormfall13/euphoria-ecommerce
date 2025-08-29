@@ -8,7 +8,21 @@ const router = express.Router();
 // 📌 1. Создание товара
 router.post("/", async (req, res) => {
     try {
-        const { nameProd, price, categoryId, brand, images, sizes, colors, stock, isHit, isNew, isSale } = req.body;
+        const {
+          nameProd,
+          price,
+          oldPrice,
+          description,
+          categoryId,
+          brand,
+          images,
+          sizes,
+          colors,
+          stock,
+          isHit,
+          isNew,
+          isSale,
+        } = req.body;
 
         if (!nameProd || !price || !categoryId) {
             return res.status(400).json({ message: "Все поля обязательны" });
@@ -22,6 +36,8 @@ router.post("/", async (req, res) => {
         const newProduct = await Product.create({
             nameProd,
             price,
+            oldPrice,
+            description,
             categoryId,
             brand,
             images: images || [], // массив
@@ -41,37 +57,51 @@ router.post("/", async (req, res) => {
 // 📌 2. Обновление товара (с возможностью менять `image`)
 router.put("/:id", async (req, res) => {
     try {
-        const { id } = req.params;
-        const { nameProd, price, categoryId, brand, images, stock, isHit, isNew, isSale } = req.body; // `image` теперь строка
+      const { id } = req.params;
+      const {
+        nameProd,
+        price,
+        oldPrice,
+        description,
+        categoryId,
+        brand,
+        images,
+        stock,
+        isHit,
+        isNew,
+        isSale,
+      } = req.body; // `image` теперь строка
 
-        const product = await Product.findByPk(id);
-        if (!product) {
-            return res.status(404).json({ message: "Товар не найден" });
+      const product = await Product.findByPk(id);
+      if (!product) {
+        return res.status(404).json({ message: "Товар не найден" });
+      }
+
+      if (categoryId) {
+        const category = await Category.findByPk(categoryId);
+        if (!category) {
+          return res.status(404).json({ message: "Категория не найдена" });
         }
+      }
 
-        if (categoryId) {
-            const category = await Category.findByPk(categoryId);
-            if (!category) {
-                return res.status(404).json({ message: "Категория не найдена" });
-            }
-        }
-
-        product.nameProd = nameProd || product.nameProd;
-        product.price = price || product.price;
-        product.categoryId = categoryId || product.categoryId;
-        product.brand = brand || product.brand;
-        product.images || [], // массив
+      product.nameProd = nameProd || product.nameProd;
+      product.price = price || product.price;
+      product.oldPrice = oldPrice || product.oldPrice;
+      product.description = description || product.description;
+      product.categoryId = categoryId || product.categoryId;
+      product.brand = brand || product.brand;
+      product.images || [], // массив
         product.sizes || [],
         product.colors || [],
-        product.stock = stock || product.stock;
+        (product.stock = stock || product.stock);
 
-         // 🔹 Обновляем флаги
-        product.isHit = isHit !== undefined ? Boolean(isHit) : product.isHit;
-        product.isNew = isNew !== undefined ? Boolean(isNew) : product.isNew;
-        product.isSale = isSale !== undefined ? Boolean(isSale) : product.isSale;
+      // 🔹 Обновляем флаги
+      product.isHit = isHit !== undefined ? Boolean(isHit) : product.isHit;
+      product.isNew = isNew !== undefined ? Boolean(isNew) : product.isNew;
+      product.isSale = isSale !== undefined ? Boolean(isSale) : product.isSale;
 
-        await product.save();
-        res.json({ message: "Товар обновлён", product });
+      await product.save();
+      res.json({ message: "Товар обновлён", product });
     } catch (err) {
         res.status(500).json({ message: "Ошибка сервера", error: err.message });
     }

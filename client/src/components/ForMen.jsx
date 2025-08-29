@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 
 import noPhoto from '../assets/no-photo.png';
 
+import '../scss/forMen.css';
+
 const ForMen = () => {
 
     const blockCardParam = {

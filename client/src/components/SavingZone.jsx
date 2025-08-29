@@ -8,6 +8,8 @@ import bsaving3 from '../assets/bsaving3.png';
 import bsaving4 from '../assets/bsaving4.png';
 import bsaving5 from '../assets/bsaving5.png';
 
+import '../scss/savingZone.css';
+
 const saveZoneData = [
   {
     id: 1,

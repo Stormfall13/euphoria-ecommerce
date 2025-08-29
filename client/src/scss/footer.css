@@ -1,0 +1,175 @@
+.footer {
+  background: var(--fourth);
+}
+.footer .footer__wrapp-colums {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1060px;
+}
+.footer .footer__wrapp {
+  max-width: 1240px;
+  width: 100%;
+  padding: 50px 15px;
+  margin: 0 auto;
+  padding: 50px 15px 0 15px;
+}
+@media (max-width: 991px) {
+  .footer .footer__wrapp {
+    padding: 30px 15px;
+  }
+}
+@media (max-width: 489px) {
+  .footer .footer__wrapp {
+    width: initial;
+    padding: 20px 10px;
+  }
+}
+.footer .footer__wrapp .three__colums-menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 585px;
+  width: 100%;
+}
+.footer .footer__wrapp .three__colums-menu .footer__menu .title__menu {
+  font-family: var(--text-font-causten);
+  font-weight: var(--bold);
+  font-size: 28px;
+  color: var(--text-color-white);
+  margin: 0 0 15px 0;
+}
+.footer .footer__wrapp .three__colums-menu .footer__menu ul {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.footer .footer__wrapp .three__colums-menu .footer__menu ul li a {
+  font-family: var(--text-font-causten);
+  font-weight: var(--medium);
+  font-size: 18px;
+  color: var(--text-color-white);
+  transition: 0.6s;
+}
+@media (any-hover: hover) {
+  .footer .footer__wrapp .three__colums-menu .footer__menu ul li a:hover {
+    color: var(--first-color);
+  }
+}
+.footer .footer__wrapp .contacts .title__contacts {
+  font-family: var(--text-font-causten);
+  font-weight: var(--bold);
+  font-size: 28px;
+  color: var(--text-color-white);
+  margin: 0 0 15px 0;
+}
+.footer .footer__wrapp .contacts .contacts__wrapp {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.footer .footer__wrapp .contacts .contacts__wrapp .contacts__text {
+  font-family: var(--text-font-causten);
+  font-weight: var(--medium);
+  font-size: 18px;
+  color: var(--text-color-white);
+  transition: 0.6s;
+}
+@media (any-hover: hover) {
+  .footer .footer__wrapp .contacts .contacts__wrapp .contacts__text:hover {
+    color: var(--first-color);
+  }
+}
+.footer .footer__middle {
+  max-width: 1240px;
+  width: 100%;
+  padding: 50px 15px;
+  margin: 0 auto;
+  padding: 0 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+@media (max-width: 991px) {
+  .footer .footer__middle {
+    padding: 30px 15px;
+  }
+}
+@media (max-width: 489px) {
+  .footer .footer__middle {
+    width: initial;
+    padding: 20px 10px;
+  }
+}
+.footer .footer__middle .social__wrapp {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.footer .footer__middle .download__app-wrapp .title__download {
+  font-family: var(--text-font-causten);
+  font-weight: var(--bold);
+  font-size: 28px;
+  color: var(--text-color-white);
+  margin: 0 0 38px 0;
+}
+.footer .footer__middle .download__app-wrapp .variant__download {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 21px;
+}
+.footer .popular__categories {
+  max-width: 1240px;
+  width: 100%;
+  padding: 50px 15px;
+  margin: 0 auto;
+  padding: 30px 15px;
+}
+@media (max-width: 991px) {
+  .footer .popular__categories {
+    padding: 30px 15px;
+  }
+}
+@media (max-width: 489px) {
+  .footer .popular__categories {
+    width: initial;
+    padding: 20px 10px;
+  }
+}
+.footer .popular__categories .popular__btn {
+  border-top: 1px solid #BEBCBD;
+  border-bottom: 1px solid #BEBCBD;
+  padding: 30px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer .popular__categories .popular__btn .popular__title {
+  font-family: var(--text-font-causten);
+  font-weight: var(--bold);
+  font-size: 28px;
+  color: var(--text-color-white);
+}
+.footer .copyright {
+  max-width: 1240px;
+  width: 100%;
+  padding: 50px 15px;
+  margin: 0 auto;
+  padding: 25px 15px;
+  font-family: var(--text-font-causten);
+  font-weight: var(--bold);
+  font-size: 18px;
+  color: var(--text-color-white);
+  text-align: center;
+}
+@media (max-width: 991px) {
+  .footer .copyright {
+    padding: 30px 15px;
+  }
+}
+@media (max-width: 489px) {
+  .footer .copyright {
+    width: initial;
+    padding: 20px 10px;
+  }
+}/*# sourceMappingURL=footer.css.map */

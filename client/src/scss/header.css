@@ -1,0 +1,182 @@
+.header__wrapp {
+  max-width: 1240px;
+  width: 100%;
+  padding: 50px 15px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 29px 15px;
+}
+@media (max-width: 991px) {
+  .header__wrapp {
+    padding: 30px 15px;
+  }
+}
+@media (max-width: 489px) {
+  .header__wrapp {
+    width: initial;
+    padding: 20px 10px;
+  }
+}
+.header__wrapp .logo {
+  max-width: 100px;
+}
+.header__wrapp .logo img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.header__wrapp .category__menu .title__category {
+  text-transform: capitalize;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+.header__wrapp .category__menu .title__category .shop__link {
+  font-family: var(--text-font-causten);
+  font-weight: var(--medium);
+  font-size: 22px;
+  color: var(--text-color-brown);
+  transition: 0.6s;
+}
+@media (any-hover: hover) {
+  .header__wrapp .category__menu .title__category .shop__link:hover {
+    color: var(--text-color-black);
+  }
+}
+.header__wrapp .category__menu .title__category span {
+  font-family: var(--text-font-causten);
+  font-weight: var(--medium);
+  font-size: 22px;
+  color: var(--text-color-brown);
+  cursor: pointer;
+  transition: 0.6s;
+  position: relative;
+}
+@media (any-hover: hover) {
+  .header__wrapp .category__menu .title__category span:hover {
+    color: var(--text-color-black);
+  }
+}
+.header__wrapp .category__menu .title__category .category__list {
+  position: absolute;
+  background: #fff;
+  box-shadow: 0px 0px 2px 0px #c8c9c9;
+  border-radius: 8px;
+  padding: 5px 10px;
+  z-index: 2;
+}
+.header__wrapp .category__menu .title__category .category__list a {
+  font-family: var(--text-font-causten);
+  font-weight: var(--medium);
+  font-size: 18px;
+  color: var(--text-color-black);
+}
+.header__wrapp .global__search {
+  background: var(--second-color);
+  border-radius: 8px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 10px 45px 10px 20px;
+}
+.header__wrapp .global__search input {
+  border: 0;
+  outline: none;
+  font-family: var(--text-font-causten);
+  font-weight: var(--regular);
+  color: var(--text-color-black);
+  background: transparent;
+}
+.header__wrapp .global__search input::-moz-placeholder {
+  color: var(--text-color-brown);
+}
+.header__wrapp .global__search input::placeholder {
+  color: var(--text-color-brown);
+}
+.header__wrapp .global__search .global__search-btn {
+  border: 0;
+  outline: none;
+  background: transparent;
+  cursor: pointer;
+}
+.header__wrapp .header__wrapp-btn {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.header__wrapp .favorites__true {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  background: var(--first-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.header__wrapp .favorites__true a {
+  width: 20px;
+  height: 20px;
+}
+.header__wrapp .favorites__false {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  background: var(--second-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.header__wrapp .user__true {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  background: var(--first-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+}
+.header__wrapp .user__false {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  background: var(--second-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+}
+.header__wrapp .header__navbar {
+  position: absolute;
+  background: var(--first-color);
+  border-radius: 8px;
+  padding: 5px 20px;
+  z-index: 2;
+}
+.header__wrapp .basket__true {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  background: var(--first-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.header__wrapp .basket__false {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  background: var(--second-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}/*# sourceMappingURL=header.css.map */

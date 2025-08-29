@@ -2,7 +2,8 @@ import React, {useEffect, useState} from 'react';
 import { Link } from "react-router-dom";
 
 import noPhoto from '../assets/no-photo.png';
-import HeaderMain from '../components/HeaderMain';
+
+import '../scss/allCategory.css';
 
 const AllCategoryPage = () => {
 
@@ -17,7 +18,6 @@ const AllCategoryPage = () => {
 
   return (
     <section className='all__category'>
-      <HeaderMain />
       <h1 className='page__title'>All Category</h1>
       <nav className='category__wrapp'>
         <ul>

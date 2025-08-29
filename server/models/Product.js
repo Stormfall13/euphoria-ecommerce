@@ -11,6 +11,13 @@ const Product = sequelize.define("Product", {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
+    oldPrice: {
+        type: DataTypes.INTEGER,
+    },
+    description: {
+        type: DataTypes.TEXT, // TEXT для длинного текста
+        allowNull: true,
+    },
     categoryId: {
         type: DataTypes.INTEGER,
         allowNull: false,

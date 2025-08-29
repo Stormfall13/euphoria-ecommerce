@@ -12,6 +12,8 @@ import heartWhite from '../assets/heart-white.svg';
 import userBrown from '../assets/user-brown.svg';
 import userWhite from '../assets/user-white.svg';
 
+import '../scss/header.css';
+
 const HeaderMain = () => {
 
     const [categories, setCategories] = useState([]);

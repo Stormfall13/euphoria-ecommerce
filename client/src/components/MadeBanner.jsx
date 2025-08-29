@@ -3,6 +3,8 @@ import React from 'react';
 import bbanner21 from '../assets/bbanner21.webp';
 import bbanner22 from '../assets/bbanner22.webp';
 
+import '../scss/madeBanner.css';
+
 const madeBannerData = [
     {
         id: 1,

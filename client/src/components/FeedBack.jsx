@@ -7,6 +7,8 @@ import feedback1 from '../assets/feedback1.png';
 import feedback2 from '../assets/feedback2.png';
 import feedback3 from '../assets/feedback3.png';
 
+import '../scss/feedback.css';
+
 const feedbackControl = {
     hidden: false,
     title: 'Feedback'

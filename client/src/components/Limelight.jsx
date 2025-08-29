@@ -6,6 +6,8 @@ import { toggleFavoriteLocally } from "../store/slices/favoriteSlice";
 import heartCardBrown from '../assets/heart-card-brown.svg';
 import heartCardWhite from '../assets/heart-card-white.svg';
 
+import '../scss/limelight.css';
+
 const limelightParams = {
     title: 'In The Limelight',
     hidden: false,

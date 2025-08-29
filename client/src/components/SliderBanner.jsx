@@ -4,6 +4,8 @@ import carouselControlPrev from '../assets/carousel-control-prev.svg';
 
 import slideBg from '../assets/slide-bg.webp';
 
+import '../scss/sliderBanner.css';
+
 const slides = [
     { id: 1, 
       img: slideBg, 
@@ -50,7 +52,7 @@ const SliderBanner = () => {
       {slides.map((slide) => (
         <div className="slider-banner__slide" key={slide.id}>
           <div className="slider__img">
-            <img src={slide.img} alt={slide.alt} />
+            <img rel='preload' src={slide.img} alt={slide.alt} />
           </div>
           <div className="slide__text-wrapp">
             <p className='slide__text-top'>{slide.textTop}</p>

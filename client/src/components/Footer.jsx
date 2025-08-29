@@ -10,6 +10,8 @@ import popularArrowDown from '../assets/popular-arrow-down.svg';
 import appstore from '../assets/appstore.png';
 import googleplay from '../assets/googleplay.png';
 
+import '../scss/footer.css';
+
 const socialFooterData = [
     {
         id: 1,

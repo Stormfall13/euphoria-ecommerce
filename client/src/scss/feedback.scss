@@ -1,0 +1,93 @@
+@mixin section__styles{
+    max-width: 1240px;
+    width: 100%;
+    padding: 50px 15px;
+    margin: 0 auto;
+    @media (max-width: 991px) {
+        padding: 30px 15px;
+    }
+    @media (max-width: 489px) {
+        width: initial;
+        padding: 20px 10px;
+    }
+}
+@mixin title__styles__main__page{
+    font-family: 'Core Sans C 65';
+    font-size: 34px;
+    color: var(--text-color-black);
+    padding: 0 0 0 20px;
+    position: relative;
+    margin: 0 0 70px 0;
+    &::after{
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 5px;
+        width: 6px;
+        height: 30px;
+        border-radius: 10px;
+        background: var(--first-color);
+    }
+    @media (max-width: 991px) {
+        font-size: 26px;
+        margin: 0 0 50px 0;
+    }
+    @media (max-width: 489px) {
+        font-size: 22px;
+        margin: 0 0 20px 0;
+    }
+}
+.feedback{
+    @include section__styles();
+    &__title{
+        @include title__styles__main__page();
+    }
+    &__list{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 23px;
+    }
+    &__item{
+        max-width: 392px;
+        width: 100%;
+        border-radius: 10px;
+        border: 2px solid #BEBCBD;
+        padding: 24px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    &__header{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        max-width: 350px;
+        width: 100%;
+        .feedback__img{
+            width: 58px;
+            height: 58px;
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+        }
+    }
+    &__body{
+        max-width: 350px;
+        margin: 20px 0;
+        .feedback__author{
+            font-family: var(--text-font-coreSans55);
+            font-size: 22px;
+            color: var(--text-color-black);
+            margin: 0 0 20px 0;
+        }
+        .feedback__text{
+            font-family: var(--text-font-causten);
+            font-weight: var(--regular);
+            font-size: 14px;
+            color: var(--text-color-brown);
+            line-height: 19px;
+        }
+    }
+}

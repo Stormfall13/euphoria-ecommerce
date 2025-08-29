@@ -16,13 +16,14 @@ import FeedBack from "../components/FeedBack";
 
 const Home = () => {
     const dispatch = useDispatch();
-
+    
     useEffect(() => {
         const token = localStorage.getItem("token");
         if (token) {
             dispatch(fetchFavorites());
         }
     }, [dispatch]);
+    
     return (
         <>
             <SliderBanner />

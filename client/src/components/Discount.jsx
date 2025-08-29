@@ -3,6 +3,8 @@ import React from 'react';
 import bannerSmall1 from '../assets/banner-small1.webp';
 import bannerSmall2 from '../assets/banner-small2.webp';
 
+import '../scss/discount.css';
+
 const discountCard = [
     {
         id: 1,

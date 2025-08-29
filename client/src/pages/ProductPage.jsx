@@ -22,6 +22,44 @@ import inf4 from '../assets/inf4.svg';
 import CommentsProdPage from "../components/ProductPageUtils/CommentsProdPage";
 import QnAProductPage from "../components/ProductPageUtils/QnAProductPage";
 
+
+import videoImg from "../assets/video-img.png";
+
+import '../scss/productPage.css';
+
+const descriptTableData = [
+  {
+    id: 1,
+    title: 'fabric',
+    text: 'Bio-washed Cotton',
+  },
+  {
+    id: 2,
+    title: 'Pattern',
+    text: 'Printed',
+  },
+  {
+    id: 3,
+    title: 'Fit',
+    text: 'Regular-fit',
+  },
+  {
+    id: 4,
+    title: 'Neck',
+    text: 'Round Neck',
+  },
+  {
+    id: 5,
+    title: 'Sleeve',
+    text: 'Haif-sleeves',
+  },
+  {
+    id: 6,
+    title: 'Style',
+    text: 'Casual Wear',
+  },
+]
+
 const ProductPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -339,37 +377,53 @@ const ProductPage = () => {
           </div>
         </div>
       </div>
-      <div className="tabs__panel">
-        <button onClick={() => setActiveTabProduct('description')}>Description</button>
-        <button onClick={() => setActiveTabProduct('userComments')}>
-          User Comments
-          {comments.length}
-        </button>
-        <button onClick={() => setActiveTabProduct('qna')}>
-          Question & Answer
-          {qna.length}
-        </button>
-      </div>
-      {activeTabProduct === 'description' && (
-        <>
-          {product.description && (
-              <p className="description__prod">{product.description}</p>
+      <div className="product__wrapper-bottom">
+        <div className="wrapper__left">
+          <p className="tabs__title">Product {activeTabProduct}</p>
+          <div className="tabs__panel">
+            <button onClick={() => setActiveTabProduct('description')}>Description</button>
+            <button onClick={() => setActiveTabProduct('user comments')}>
+              User Comments
+              <div className="count__comments">{comments.length}</div>
+            </button>
+            <button onClick={() => setActiveTabProduct('qna')}>
+              Question & Answer
+              <div className="count__qna">{qna.length}</div>
+            </button>
+          </div>
+          {activeTabProduct === 'description' && (
+            <div className="description__wrapp">
+              {product.description && (
+                  <p className="description__prod">{product.description}</p>
+              )}
+              <div className="description__table">
+                  {descriptTableData.map((items) => (
+                    <div className="table__wrapp" key={items.id}>
+                        <p className="table__title">{items.title}</p>
+                        <p className="table__text">{items.text}</p>
+                    </div>
+                  ))}
+              </div>
+            </div>
           )}
-        </>
-      )}
-      {/* КОММЕНТАРИИ */}
-      {activeTabProduct === 'userComments' && (
-        <CommentsProdPage />
-      )}
-      {/* ВОПРОС И ОТВЕТ */}
-      {activeTabProduct === 'qna' && (
-        <QnAProductPage />
-      )}
-      {error && (
-        <div style={{ color: "red", margin: "10px 0" }}>
-          {error}
+          {/* КОММЕНТАРИИ */}
+          {activeTabProduct === 'user comments' && (
+            <CommentsProdPage />
+          )}
+          {/* ВОПРОС И ОТВЕТ */}
+          {activeTabProduct === 'qna' && (
+            <QnAProductPage />
+          )}
+          {error && (
+            <div style={{ color: "red", margin: "10px 0" }}>
+              {error}
+            </div>
+          )}
         </div>
-      )}
+        <div className="wrapper__right">
+          <img src={videoImg} alt="video img" />
+        </div>
+      </div>
     </section>
   );
 };

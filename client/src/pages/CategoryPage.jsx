@@ -15,7 +15,7 @@ import filterArrowOpenClose from '../assets/filter-arrow-open-close.svg';
 import heartCardBrown from '../assets/heart-card-brown.svg';
 import heartCardWhite from '../assets/heart-card-white.svg';
 
-import './categoryPage.css';
+import '../scss/categoryPage.css';
 
 
 const CategoryPage = () => {

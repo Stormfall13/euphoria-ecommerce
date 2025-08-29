@@ -43,9 +43,6 @@ const BasketCount = () => {
 
   return (
     <div className="basket__wrapp-btn">
-      {/* <Link to="/basket">
-        🛒 Товаров: {totalCount} | Сумма: {totalPrice} $
-      </Link> */}
       {totalCount ? (
         <Link to="/basket" className="basket__true">
           <img src={shoppingCartWhite} alt="shopping cart icon" />
