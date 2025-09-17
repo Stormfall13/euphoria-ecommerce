@@ -1,6 +1,7 @@
 import React, { useState, useEffect }  from 'react';
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
+import useMediaQuery from './useMediaQuery';
 
 import Header from "../components/Header";
 import BasketCount from "../components/BasketCount";
@@ -15,13 +16,14 @@ import userWhite from '../assets/user-white.svg';
 import '../scss/header.css';
 
 const HeaderMain = () => {
-
+    
     const [categories, setCategories] = useState([]);
     const [openCollection, setOpenCollection] = useState(null);
     const [userWindow, setUserWindow] = useState(false);
     const favoriteIds = useSelector((state) => state.favorites.ids);
     const user = useSelector((state) => state.auth.user);
-    
+
+    const isDesktop = useMediaQuery("(min-width: 992px)");
 
     useEffect(() => {
         fetch(`${process.env.REACT_APP_API_URL}/api/categories`)
@@ -30,9 +32,34 @@ const HeaderMain = () => {
             .catch((err) => console.error("Ошибка загрузки категорий", err));
     }, []);
 
+    const handleDesktopEnter = (collectionName) => {
+        if (isDesktop) {
+            setOpenCollection(collectionName);
+        }
+    };
+
+    const handleDesktopLeave = () => {
+        if (isDesktop) {
+            setOpenCollection(null);
+        }
+    };
+
+    const handleMobileClick = (collectionName) => {
+        if (!isDesktop) {
+            setOpenCollection(prev => prev === collectionName ? null : collectionName);
+        }
+    };
+
     const handleToggle = (collectionName) => {
         setOpenCollection(prev => prev === collectionName ? null : collectionName);
     };
+
+    const location = useLocation();
+    const hideOnPages = ['/login', '/register'];
+    
+    if (hideOnPages.includes(location.pathname)) {
+      return null;
+    }
 
     return (
         <header className="header">
@@ -50,10 +77,11 @@ const HeaderMain = () => {
                         return acc;
                         }, {})
                         ).map(([collectionName, collectionCategories]) => (
-                        <li key={collectionName}>
-                            <span onClick={() => handleToggle(collectionName)}>
-                                {collectionName}
-                            </span>
+                        <li key={collectionName}
+                            onMouseEnter={() => handleDesktopEnter(collectionName)}
+                            onMouseLeave={handleDesktopLeave}
+                            onClick={() => handleMobileClick(collectionName)}>
+                            <span>{collectionName}</span>
                         {openCollection === collectionName && (
                         <ul className="category__list">
                             {collectionCategories.map(category => (

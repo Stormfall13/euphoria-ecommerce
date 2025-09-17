@@ -90,6 +90,11 @@
                         color: var(--text-color-black);
                     }
                 }
+                @media (max-width: 991px) {
+                    .category__list{
+                        position: initial;
+                    }
+                }
             }
         }
         .global__search{

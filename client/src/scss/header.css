@@ -74,6 +74,11 @@
   font-size: 18px;
   color: var(--text-color-black);
 }
+@media (max-width: 991px) {
+  .header__wrapp .category__menu .title__category .category__list {
+    position: initial;
+  }
+}
 .header__wrapp .global__search {
   background: var(--second-color);
   border-radius: 8px;
