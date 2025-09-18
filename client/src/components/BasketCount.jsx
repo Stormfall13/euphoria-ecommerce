@@ -39,7 +39,7 @@ const BasketCount = () => {
 
   useEffect(() => {
     fetchCart();
-  }, [fetchCart]);
+  }, []);
 
   return (
     <div className="basket__wrapp-btn">

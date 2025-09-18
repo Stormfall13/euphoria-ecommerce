@@ -6,7 +6,12 @@
 }
 @media (max-width: 991px) {
   .new__arrival {
+    width: initial;
     padding: 30px 15px;
+  }
+  .new__arrival .arrival__wrapper {
+    gap: 10px !important;
+    justify-content: normal !important;
   }
 }
 @media (max-width: 489px) {
@@ -16,7 +21,7 @@
   }
 }
 .new__arrival-title {
-  font-family: "Core Sans C 65";
+  font-family: var(--text-font-coreSans65);
   font-size: 34px;
   color: var(--text-color-black);
   padding: 0 0 0 20px;

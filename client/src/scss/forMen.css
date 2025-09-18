@@ -6,7 +6,11 @@
 }
 @media (max-width: 991px) {
   .man__category-list {
+    width: initial;
     padding: 30px 15px;
+  }
+  .man__category-list .man__category-wrapp {
+    gap: 10px !important;
   }
 }
 @media (max-width: 489px) {

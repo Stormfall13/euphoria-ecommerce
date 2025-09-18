@@ -5,6 +5,25 @@
     margin: 0 auto;
     @media (max-width: 991px) {
         padding: 30px 15px;
+        width: initial;
+        .banner__wrapp{
+            max-width: 480px !important;
+            max-height: 491px !important;
+            overflow: hidden;
+            img{
+                width: 100%;
+                height: 100%;
+            }
+            .banners__content-wrapp{
+                max-width: 390px;
+                .banner__title{
+                    font-size: 22px !important;
+                }
+                .banner__text{
+                    font-size: 16px !important;
+                }
+            }
+        }
     }
     @media (max-width: 489px) {
         width: initial;

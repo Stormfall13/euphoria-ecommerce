@@ -4,7 +4,12 @@
     padding: 50px 15px;
     margin: 0 auto;
     @media (max-width: 991px) {
+        width: initial;
         padding: 30px 15px;
+        .arrival__wrapper{
+            gap: 10px !important;
+            justify-content: normal !important;
+        }
     }
     @media (max-width: 489px) {
         width: initial;
@@ -12,7 +17,7 @@
     }
 }
 @mixin title__styles__main__page{
-    font-family: 'Core Sans C 65';
+    font-family: var(--text-font-coreSans65);
     font-size: 34px;
     color: var(--text-color-black);
     padding: 0 0 0 20px;

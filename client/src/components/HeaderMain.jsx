@@ -12,6 +12,8 @@ import heartBrown from '../assets/heart-brown.svg';
 import heartWhite from '../assets/heart-white.svg';
 import userBrown from '../assets/user-brown.svg';
 import userWhite from '../assets/user-white.svg';
+import burger from '../assets/burger.svg';
+import close from '../assets/close.svg';
 
 import '../scss/header.css';
 
@@ -20,6 +22,7 @@ const HeaderMain = () => {
     const [categories, setCategories] = useState([]);
     const [openCollection, setOpenCollection] = useState(null);
     const [userWindow, setUserWindow] = useState(false);
+    const [closeBurgerMenu, setCloseBurgerMenu] = useState(false);
     const favoriteIds = useSelector((state) => state.favorites.ids);
     const user = useSelector((state) => state.auth.user);
 
@@ -50,6 +53,12 @@ const HeaderMain = () => {
         }
     };
 
+    const handleCloseClick = () => {
+        if(isDesktop){
+            setCloseBurgerMenu()
+        }
+    }
+
     const handleToggle = (collectionName) => {
         setOpenCollection(prev => prev === collectionName ? null : collectionName);
     };
@@ -67,7 +76,16 @@ const HeaderMain = () => {
                 <a href="/" className="logo">
                     <img src={logo} alt="logo" />
                 </a>
-                <nav className="category__menu">
+                <div className="burger__btn" onClick={() => setCloseBurgerMenu(true)}>
+                    <img rel='preload' src={burger} alt="burger btn" />
+                </div>
+                <nav className="category__menu" 
+                    style={{
+                        transform: `${closeBurgerMenu ? 'translate(0%)' : ''}`
+                    }}>
+                    <div className="close__btn" onClick={() => setCloseBurgerMenu(false)}>
+                        <img rel='preload' src={close} alt="close btn" />
+                    </div>
                 <ul className="title__category">
                     <Link className="shop__link" to='/allcategory'>Shop</Link>
                     {Object.entries(

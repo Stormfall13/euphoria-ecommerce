@@ -4,7 +4,12 @@
     padding: 50px 15px;
     margin: 0 auto;
     @media (max-width: 991px) {
+        width: initial;
         padding: 30px 15px;
+        border-radius: 0;
+        .brand__img-wrapp{
+            gap: 10px !important;
+        }
     }
     @media (max-width: 489px) {
         width: initial;
@@ -33,6 +38,7 @@
     }
     .brand__img-wrapp{
         display: flex;
+        flex-wrap: wrap;
         gap: 24px;
         max-width: 985px;
         padding: 25px 0 0 0;

@@ -13,7 +13,12 @@
 }
 @media (max-width: 991px) {
   .brands {
+    width: initial;
     padding: 30px 15px;
+    border-radius: 0;
+  }
+  .brands .brand__img-wrapp {
+    gap: 10px !important;
   }
 }
 @media (max-width: 489px) {
@@ -35,6 +40,7 @@
 }
 .brands .brand__img-wrapp {
   display: flex;
+  flex-wrap: wrap;
   gap: 24px;
   max-width: 985px;
   padding: 25px 0 0 0;

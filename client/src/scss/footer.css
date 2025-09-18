@@ -16,6 +16,7 @@
 }
 @media (max-width: 991px) {
   .footer .footer__wrapp {
+    width: initial;
     padding: 30px 15px;
   }
 }
@@ -92,6 +93,7 @@
 }
 @media (max-width: 991px) {
   .footer .footer__middle {
+    width: initial;
     padding: 30px 15px;
   }
 }
@@ -127,6 +129,7 @@
 }
 @media (max-width: 991px) {
   .footer .popular__categories {
+    width: initial;
     padding: 30px 15px;
   }
 }
@@ -164,6 +167,7 @@
 }
 @media (max-width: 991px) {
   .footer .copyright {
+    width: initial;
     padding: 30px 15px;
   }
 }

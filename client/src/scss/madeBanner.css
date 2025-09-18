@@ -11,6 +11,25 @@
 @media (max-width: 991px) {
   .made__banner {
     padding: 30px 15px;
+    width: initial;
+  }
+  .made__banner .banner__wrapp {
+    max-width: 480px !important;
+    max-height: 491px !important;
+    overflow: hidden;
+  }
+  .made__banner .banner__wrapp img {
+    width: 100%;
+    height: 100%;
+  }
+  .made__banner .banner__wrapp .banners__content-wrapp {
+    max-width: 390px;
+  }
+  .made__banner .banner__wrapp .banners__content-wrapp .banner__title {
+    font-size: 22px !important;
+  }
+  .made__banner .banner__wrapp .banners__content-wrapp .banner__text {
+    font-size: 16px !important;
   }
 }
 @media (max-width: 489px) {
