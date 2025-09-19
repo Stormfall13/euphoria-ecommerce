@@ -196,8 +196,11 @@
 @media (max-width: 991px) {
   .header .burger__btn {
     display: inline-block;
-    width: 35px;
-    height: 35px;
+    width: 44px;
+    height: 44px;
+    order: 1;
+    background: var(--first-color);
+    border-radius: 8px;
   }
   .header .burger__btn img {
     width: 100%;

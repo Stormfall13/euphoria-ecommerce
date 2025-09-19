@@ -92,3 +92,19 @@
         }
     }
 }
+
+@media (max-width: 489px) {
+    .feedback{
+        &__list{
+            gap: 11px;
+            .feedback__item{
+                max-width: 225px;
+            }
+        }
+        &__body{
+            .feedback__author{
+                font-size: 16px;
+            }
+        }
+    }
+}

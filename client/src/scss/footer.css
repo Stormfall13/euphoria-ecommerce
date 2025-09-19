@@ -176,4 +176,14 @@
     width: initial;
     padding: 20px 10px;
   }
+}
+
+@media (max-width: 489px) {
+  .footer .footer__wrapp .three__colums-menu {
+    display: none;
+  }
+  .footer .footer__middle {
+    align-items: flex-start;
+    flex-direction: column;
+  }
 }/*# sourceMappingURL=footer.css.map */

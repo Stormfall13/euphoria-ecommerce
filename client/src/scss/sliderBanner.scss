@@ -120,3 +120,46 @@
         }
     }
 }
+
+
+@media (max-width: 991px) {
+    .slider-banner{
+        height: 100%;
+    }
+    .slider-banner__slide{
+        max-height: 473px;
+        .slide__text-wrapp{
+            .slide__text-top{
+                font-size: 20px;
+            }
+            .slide__text-title{
+                font-size: 35px;
+            }
+            .slide__text-bottom{
+                font-size: 20px;
+            }
+            .slide__link{
+                font-size: 18px;
+                padding: 10px 37px;
+            }
+        }
+    }
+}
+
+@media (max-width: 489px) {
+    .slider-banner__slide{
+        .slide__text-wrapp{
+            gap: 15px;
+            left: 15%;
+            .slide__text-top{
+                font-size: 15px;
+            }
+            .slide__text-title{
+                font-size: 25px;
+            }
+            .slide__text-bottom{
+                font-size: 15px;
+            }
+        }
+    }
+}

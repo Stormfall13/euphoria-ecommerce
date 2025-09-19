@@ -81,4 +81,13 @@
   font-weight: var(--medium);
   font-size: 14px;
   color: var(--text-color-brown);
+}
+
+@media (max-width: 489px) {
+  .man__category-list .man__category-wrapp .category__wrapper {
+    max-width: 229px;
+  }
+  .man__category-list .man__category-wrapp .category__wrapper .category__img {
+    max-width: 229px;
+  }
 }/*# sourceMappingURL=forMen.css.map */

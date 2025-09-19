@@ -94,4 +94,16 @@
   font-size: 14px;
   color: var(--text-color-brown);
   line-height: 19px;
+}
+
+@media (max-width: 489px) {
+  .feedback__list {
+    gap: 11px;
+  }
+  .feedback__list .feedback__item {
+    max-width: 225px;
+  }
+  .feedback__body .feedback__author {
+    font-size: 16px;
+  }
 }/*# sourceMappingURL=feedback.css.map */

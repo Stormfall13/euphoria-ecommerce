@@ -84,4 +84,26 @@
     background: transparent;
     border: 1px solid var(--third-color);
   }
+}
+
+@media (max-width: 489px) {
+  .made__banner .banner__wrapp {
+    max-width: 234px !important;
+    max-height: 238px !important;
+  }
+  .made__banner .banner__wrapp .banners__content-wrapp {
+    top: 6%;
+    left: 7%;
+    gap: 10px;
+  }
+  .made__banner .banner__wrapp .banners__content-wrapp .banner__title {
+    font-size: 16px !important;
+  }
+  .made__banner .banner__wrapp .banners__content-wrapp .banner__text {
+    font-size: 14px !important;
+  }
+  .made__banner .banner__wrapp .banners__content-wrapp .banner__link {
+    font-size: 18px;
+    padding: 10px 37px;
+  }
 }/*# sourceMappingURL=madeBanner.css.map */

@@ -139,3 +139,18 @@
         text-align: center;
     }
 }
+
+
+@media (max-width: 489px) {
+    .footer{
+        .footer__wrapp{
+            .three__colums-menu{
+                display: none;
+            }
+        }
+        .footer__middle{
+            align-items: flex-start;
+            flex-direction: column; 
+        }
+    }
+}

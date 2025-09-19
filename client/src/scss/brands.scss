@@ -50,3 +50,25 @@
         }
     }
 }
+
+@media (max-width: 489px) {
+    .brands{
+        gap: 10px;
+        .brand__title{
+            font-size: 35px;
+        }
+        .brand__img-wrapp{
+            padding: 0;
+            .brand__img{
+                max-width: 109px;
+                max-height: 52px;
+                border-radius: 8px; 
+                img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                }
+            }
+        }
+    }
+}

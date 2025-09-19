@@ -81,4 +81,10 @@
   font-size: 20px;
   color: var(--text-color-black);
   margin: 30px 0 0 0;
+}
+
+@media (max-width: 489px) {
+  .new__arrival .arrival__wrapper .arrival__wrapp {
+    max-width: 229px;
+  }
 }/*# sourceMappingURL=newArrival.css.map */

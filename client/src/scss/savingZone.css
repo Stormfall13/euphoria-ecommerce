@@ -7,7 +7,7 @@
 @media (max-width: 991px) {
   .saving__zone {
     padding: 30px 15px;
-    width: inherit;
+    width: initial;
   }
 }
 @media (max-width: 489px) {
@@ -158,4 +158,34 @@
 }
 .saving__zone .right {
   left: 5%;
+}
+
+@media (max-width: 489px) {
+  .saving__zone .wrapp__saving {
+    gap: 17px;
+  }
+  .saving__zone .wrapper__saving {
+    max-width: 226px;
+  }
+  .saving__zone .wrapper__saving .saving__img {
+    max-width: 226px;
+  }
+  .saving__zone .wrapper__saving .saving__img img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: contain;
+       object-fit: contain;
+  }
+  .saving__zone .saving__content {
+    top: 4%;
+  }
+  .saving__zone .saving__content .saving__title {
+    font-size: 16px;
+  }
+  .saving__zone .saving__content .saving__arrow-wrapp {
+    display: none;
+  }
+  .saving__zone .saving__content .saving__discount {
+    font-size: 15px;
+  }
 }/*# sourceMappingURL=savingZone.css.map */

@@ -130,4 +130,13 @@
   color: var(--text-color-black);
   padding: 10px 27px;
   display: inline-block;
+}
+
+@media (max-width: 489px) {
+  .limelight .limelight__wrapp {
+    gap: 11px;
+  }
+  .limelight .limelight__wrapp .limelight__item {
+    max-width: 229px;
+  }
 }/*# sourceMappingURL=limelight.css.map */

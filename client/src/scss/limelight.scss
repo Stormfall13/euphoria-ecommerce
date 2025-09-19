@@ -128,3 +128,14 @@
         }
     }
 }
+
+@media (max-width: 489px) {
+    .limelight{
+        .limelight__wrapp{
+            gap: 11px;
+            .limelight__item{
+                max-width: 229px;
+            }
+        }
+    }
+}

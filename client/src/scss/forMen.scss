@@ -79,3 +79,17 @@
         }
     }
 }
+
+
+@media (max-width: 489px) {
+    .man__category-list{
+        .man__category-wrapp{
+            .category__wrapper{
+                max-width: 229px;
+                .category__img{
+                    max-width: 229px;
+                }
+            }
+        }
+    }
+}
