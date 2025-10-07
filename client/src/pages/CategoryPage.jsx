@@ -267,6 +267,13 @@ const CategoryPage = () => {
                                     ))
                                     }
                                 </ul>
+                                {/* 🔹 КНОПКА ПОКАЗАТЬ/СКРЫТЬ ФИЛЬТРЫ (для мобильных) */}
+                                {isMobile && (  
+                                    <button onClick={() => setShowFilters(!showFilters)}
+                                        className="filters__btn">
+                                        {showFilters ? 'Hidden filters' : 'Show filters'}
+                                    </button> 
+                                )}
                                 </nav>
                                 {/* 🔹 ПАНЕЛЬ ФИЛЬТРОВ */}
                                 <div className="filter__panel" style={{ 
@@ -382,12 +389,6 @@ const CategoryPage = () => {
                             ''
                         )}
                     </div>
-                    {/* 🔹 КНОПКА ПОКАЗАТЬ/СКРЫТЬ ФИЛЬТРЫ (для мобильных) */}
-                    {isMobile && (  
-                        <button onClick={() => setShowFilters(!showFilters)}>
-                            {showFilters ? 'Скрыть фильтры' : 'Показать фильтры'}
-                        </button> 
-                    )}
 
                 </div>
                 <div className="filtered">
